@@ -28,52 +28,72 @@ from keras.preprocessing import image
 # à l'endroit où vous les avez enregistrées
 
 #Chemin Jérémy
-train_dir =          "C:/Users/hrokd/Documents/GitHub/Machine_Learning/Train"
-train_allene_dir =   "C:/Users/hrokd/Documents/GitHub/Machine_Learning/Train/Allene"
-train_hex_dir=       "C:/Users/hrokd/Documents/GitHub/Machine_Learning/Train/Hex"
-train_cruciforme_dir="C:/Users/hrokd/Documents/GitHub/Machine_Learning/Train/Cruciforme"
-train_plat_dir=      "C:/Users/hrokd/Documents/GitHub/Machine_Learning/Train/Plat"
+#train_dir =          "C:/Users/hrokd/Documents/GitHub/Machine_Learning/Train"
+#train_allene_dir =   "C:/Users/hrokd/Documents/GitHub/Machine_Learning/Train/Allene"
+#train_hex_dir=       "C:/Users/hrokd/Documents/GitHub/Machine_Learning/Train/Hex"
+#train_cruciforme_dir="C:/Users/hrokd/Documents/GitHub/Machine_Learning/Train/Cruciforme"
+#train_plat_dir=      "C:/Users/hrokd/Documents/GitHub/Machine_Learning/Train/Plat"
 
-validation_dir =          "C:/Users/hrokd/Documents/GitHub/Machine_Learning/Validation"
-validation_allene_dir =   "C:/Users/hrokd/Documents/GitHub/Machine_Learning/Validation/Allene"
-validation_hex_dir=       "C:/Users/hrokd/Documents/GitHub/Machine_Learning/Validation/Hex"
-validation_cruciforme_dir="C:/Users/hrokd/Documents/GitHub/Machine_Learning/Validation/Cruciforme"
-validation_plat_dir=      "C:/Users/hrokd/Documents/GitHub/Machine_Learning/Validation/Plat"
+#validation_dir =          "C:/Users/hrokd/Documents/GitHub/Machine_Learning/Validation"
+#validation_allene_dir =   "C:/Users/hrokd/Documents/GitHub/Machine_Learning/Validation/Allene"
+#validation_hex_dir=       "C:/Users/hrokd/Documents/GitHub/Machine_Learning/Validation/Hex"
+#validation_cruciforme_dir="C:/Users/hrokd/Documents/GitHub/Machine_Learning/Validation/Cruciforme"
+#validation_plat_dir=      "C:/Users/hrokd/Documents/GitHub/Machine_Learning/Validation/Plat"
 
+# Chemin relatif, attention à vérifier que le dossier d'execution de python est le bon
 
-print('total training images:', len(os.listdir(train_dir)))
+train_dir =          os.path.abspath('Train')
+train_allene_dir =   "Train/Allene"
+train_hex_dir=       "Train/Hex"
+train_cruciforme_dir="Train/Cruciforme"
+train_plat_dir=      "Train/Plat"
 
-print('total validation images:', len(os.listdir(validation_dir)))
-
-
-datagen = ImageDataGenerator(rotation_range=40,      # rotation de l'image originale
-                             width_shift_range=0.2,  # Translation horizontale et verticale de l'image
-                             height_shift_range=0.2,
-                             shear_range=0.2,        # Cisaillement aléatoire
-                             zoom_range=0.2,         # Zoom aléatoire
-                             horizontal_flip=True,   # Rotation à 90° de la moitié des données aléatoirement
-                             fill_mode='nearest')    # Stratégie à adopter pour le remplissage des pixels créés
-
-fnames = [os.path.join(train_cruciforme_dir, fname) for fname in os.listdir(train_cruciforme_dir)]
+validation_dir =          os.path.abspath('Validation')
+validation_allene_dir =   os.path.abspath('Validation/Allene')
+validation_hex_dir=       os.path.abspath('Validation/Hex')
+validation_cruciforme_dir=os.path.abspath('Validation/Cruciforme')
+validation_plat_dir=      os.path.abspath('Validation/Plat')
 
 
-img_path = fnames[3] # on choisit d'augmenter une image 
-img = image.load_img(img_path, target_size=(3264, 2448))
+print('total training images allene:', len(os.listdir(train_allene_dir)))
+print('total training images hex:', len(os.listdir(train_hex_dir)))
+print('total training images cruciforme:', len(os.listdir(train_cruciforme_dir)))
+print('total training images plat:', len(os.listdir(train_plat_dir)))
+
+print('total validation images allene:', len(os.listdir(validation_allene_dir)))
+print('total validation images hex:', len(os.listdir(validation_hex_dir)))
+print('total validation images cruciforme:', len(os.listdir(validation_cruciforme_dir)))
+print('total validation images plat:', len(os.listdir(validation_plat_dir)))
+
+
+# datagen = ImageDataGenerator(rotation_range=40,      # rotation de l'image originale
+#                              width_shift_range=0.2,  # Translation horizontale et verticale de l'image
+#                              height_shift_range=0.2,
+#                              shear_range=0.2,        # Cisaillement aléatoire
+#                              zoom_range=0.2,         # Zoom aléatoire
+#                              horizontal_flip=True,   # Rotation à 90° de la moitié des données aléatoirement
+#                              fill_mode='nearest')    # Stratégie à adopter pour le remplissage des pixels créés
+
+# fnames = [os.path.join(train_cruciforme_dir, fname) for fname in os.listdir(train_cruciforme_dir)]
+
+
+# img_path = fnames[3] # on choisit d'augmenter une image 
+# img = image.load_img(img_path, target_size=(3264, 2448))
 
 
 
 # représenttaion d'un exemple d'augmentation d'image
 
-x = image.img_to_array(img)
-x = x.reshape((1,) + x.shape)
-i = 0
-for batch in datagen.flow(x, batch_size=1):
-    plt.figure(i)
-    imgplot = plt.imshow(image.array_to_img(batch[0]))
-    i += 1
-    if i % 4 == 0:
-        break          # le générateur tourne en boucle sur lui même, il faut indiquer une condition d'arrêt
-plt.show()
+# x = image.img_to_array(img)
+# x = x.reshape((1,) + x.shape)
+# i = 0
+# for batch in datagen.flow(x, batch_size=1):
+#     plt.figure(i)
+#     imgplot = plt.imshow(image.array_to_img(batch[0]))
+#     i += 1
+#     if i % 4 == 0:
+#         break          # le générateur tourne en boucle sur lui même, il faut indiquer une condition d'arrêt
+# plt.show()
 
 
 
