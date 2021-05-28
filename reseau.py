@@ -78,3 +78,7 @@ model.add(MaxPooling2D((2,2)))
 model.add(Flatten())
 
 #Reseau de neuronne 
+model.add(Dense(1024,activation = 'relu'))
+model.add(Dense(4,activation = 'softmax'))
+
+history = model.fit_generator(train_generator,epochs=5, validation_data=validation_generator)
