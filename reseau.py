@@ -1,9 +1,4 @@
-# -*- coding: utf-8 -*-
-"""
-Spyder Editor
 
-This is a temporary script file.
-"""
 import os
 
 from keras.datasets import mnist
@@ -28,7 +23,8 @@ from tensorflow.python.util.nest import flatten
 # Modifiez ces lignes pour indiquer le chemin d'accès aux données 
 # à l'endroit où vous les avez enregistrées
 
-
+tf.test.is_built_with_cuda()
+tf.test.is_gpu_available(cuda_only=False, min_cuda_compute_capability=None)
 # Chemin relatif, attention à vérifier que le dossier d'execution de python est le bon
 
 train_dir =          os.path.abspath('Train')
