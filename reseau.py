@@ -66,7 +66,4 @@ validation_generator = train_datagen.flow_from_directory(validation_dir, target_
 model=Sequential()
 
 model.add(Conv2D(32,(5,5),activation='relu',input_shape=(816,612,3)))
-model.add(MaxPooling2D((2,2))
-
-
-
+model.add(MaxPooling2D((2,2)))
