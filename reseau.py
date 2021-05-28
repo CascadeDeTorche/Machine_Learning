@@ -27,18 +27,6 @@ from keras.preprocessing import image
 # Modifiez ces lignes pour indiquer le chemin d'accès aux données 
 # à l'endroit où vous les avez enregistrées
 
-#Chemin Jérémy
-#train_dir =          "C:/Users/hrokd/Documents/GitHub/Machine_Learning/Train"
-#train_allene_dir =   "C:/Users/hrokd/Documents/GitHub/Machine_Learning/Train/Allene"
-#train_hex_dir=       "C:/Users/hrokd/Documents/GitHub/Machine_Learning/Train/Hex"
-#train_cruciforme_dir="C:/Users/hrokd/Documents/GitHub/Machine_Learning/Train/Cruciforme"
-#train_plat_dir=      "C:/Users/hrokd/Documents/GitHub/Machine_Learning/Train/Plat"
-
-#validation_dir =          "C:/Users/hrokd/Documents/GitHub/Machine_Learning/Validation"
-#validation_allene_dir =   "C:/Users/hrokd/Documents/GitHub/Machine_Learning/Validation/Allene"
-#validation_hex_dir=       "C:/Users/hrokd/Documents/GitHub/Machine_Learning/Validation/Hex"
-#validation_cruciforme_dir="C:/Users/hrokd/Documents/GitHub/Machine_Learning/Validation/Cruciforme"
-#validation_plat_dir=      "C:/Users/hrokd/Documents/GitHub/Machine_Learning/Validation/Plat"
 
 # Chemin relatif, attention à vérifier que le dossier d'execution de python est le bon
 
@@ -59,7 +47,7 @@ print('total training images allene:', len(os.listdir(train_allene_dir)))
 print('total training images hex:', len(os.listdir(train_hex_dir)))
 print('total training images cruciforme:', len(os.listdir(train_cruciforme_dir)))
 print('total training images plat:', len(os.listdir(train_plat_dir)))
-
+print('\n')
 print('total validation images allene:', len(os.listdir(validation_allene_dir)))
 print('total validation images hex:', len(os.listdir(validation_hex_dir)))
 print('total validation images cruciforme:', len(os.listdir(validation_cruciforme_dir)))
