@@ -22,6 +22,7 @@ from keras.preprocessing.image import ImageDataGenerator
 import numpy as np
 import tensorflow as tf
 from keras.preprocessing import image
+from tensorflow.python.util.nest import flatten
 
 # Définition des répértoires d'images 
 # Modifiez ces lignes pour indiquer le chemin d'accès aux données 
@@ -65,5 +66,15 @@ validation_generator = train_datagen.flow_from_directory(validation_dir, target_
 
 model=Sequential()
 
+#Première Convolution
 model.add(Conv2D(32,(5,5),activation='relu',input_shape=(816,612,3)))
 model.add(MaxPooling2D((2,2)))
+
+#Deuxième Convolution
+model.add(Conv2D(64,(3,3),activation='relu',input_shape=(816,612,3)))
+model.add(MaxPooling2D((2,2)))
+
+#Vectorisation des images
+model.add(Flatten())
+
+#Reseau de neuronne 
