@@ -81,4 +81,6 @@ model.add(Flatten())
 model.add(Dense(1024,activation = 'relu'))
 model.add(Dense(4,activation = 'softmax'))
 
-history = model.fit_generator(train_generator,epochs=5, validation_data=validation_generator)
+model.compile(optimizer='rmsprop',loss='categorical_crossentropy',metrics=['accuracy'])
+
+history = model.fit(train_generator,epochs=5, validation_data=validation_generator)
