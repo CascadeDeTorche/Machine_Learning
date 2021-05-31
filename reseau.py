@@ -54,29 +54,35 @@ print('total validation images plat:', len(os.listdir(validation_plat_dir)))
 train_datagen = ImageDataGenerator(rescale=1/.255)
 validation_datagen = ImageDataGenerator(rescale=1/.255)
 
-train_generator = train_datagen.flow_from_directory(train_dir, target_size=(816,612),class_mode="categorical")
+train_generator = train_datagen.flow_from_directory(train_dir,
+                                                    target_size=(150,150),
+                                                    class_mode="categorical",
+                                                    batch_size=100)
 
-validation_generator = train_datagen.flow_from_directory(validation_dir, target_size=(816,612),class_mode="categorical")
+validation_generator = train_datagen.flow_from_directory(validation_dir,
+                                                         target_size=(150,150),
+                                                         class_mode="categorical",
+                                                         batch_size=100)
 
 # Creation du model
 
 model=Sequential()
 
 #Première Convolution
-model.add(Conv2D(32,(5,5),activation='relu',input_shape=(816,612,3)))
+model.add(Conv2D(1,(5,5),activation='relu',input_shape=(150,150,3)))
 model.add(MaxPooling2D((2,2)))
 
 #Deuxième Convolution
-model.add(Conv2D(64,(3,3),activation='relu',input_shape=(816,612,3)))
+model.add(Conv2D(2,(3,3),activation='relu'))
 model.add(MaxPooling2D((2,2)))
 
 #Vectorisation des images
 model.add(Flatten())
 
 #Reseau de neuronne 
-model.add(Dense(1024,activation = 'relu'))
+model.add(Dense(512,activation = 'relu'))
 model.add(Dense(4,activation = 'softmax'))
 
 model.compile(optimizer='rmsprop',loss='categorical_crossentropy',metrics=['accuracy'])
 
-history = model.fit(train_generator,epochs=5, validation_data=validation_generator)
+history = model.fit(train_generator,epochs=5, validation_data=validation_generator,batch_size=100)
