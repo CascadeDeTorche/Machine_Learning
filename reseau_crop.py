@@ -118,6 +118,7 @@ model.compile(optimizer='adam',
 
 
 #je conseil de lancer ça dans le terminal après le script
+#◘
 
 #resumé du model
 #model.summary()
