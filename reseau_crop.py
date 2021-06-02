@@ -52,7 +52,7 @@ train_ds = tf.keras.preprocessing.image_dataset_from_directory(
            validation_split=0.3,                #quel pourcentage des images est utilisé en validation
            subset="training",                   #précise si c'est pour le training ou la validation
            seed=123,                            #seed pour le choix aléatoire des photos entre training et validation ?
-           image_size=(img_height, img_width),  #dimension cible image
+           target_size=(img_height, img_width),  #dimension cible image
            batch_size=batch_size)               #ben la batch size
 
 val_ds = tf.keras.preprocessing.image_dataset_from_directory(
@@ -60,7 +60,7 @@ val_ds = tf.keras.preprocessing.image_dataset_from_directory(
          validation_split=0.3,
          subset="validation",                   #la on fait la validation
          seed=123,                              #faut la même seed pour les deux je pense
-         image_size=(img_height, img_width),
+         target_size=(img_height, img_width),
          batch_size=batch_size)
 
 #Nom des classes d'après le nom des dossiers
@@ -126,5 +126,5 @@ model.compile(optimizer='rmsprop',loss='categorical_crossentropy',metrics=['accu
 #model.summary()
 
 #entrainnement
-#model.fit(train_ds,epochs=5, validation_data=val_ds)
+history=model.fit(train_ds,epochs=5, validation_data=val_ds)
 
