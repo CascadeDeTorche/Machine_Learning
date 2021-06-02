@@ -126,5 +126,5 @@ model.compile(optimizer='rmsprop',loss='categorical_crossentropy',metrics=['accu
 #model.summary()
 
 #entrainnement
-#model.fit(train_ds,epochs=5, validation_data=ds)
+#model.fit(train_ds,epochs=5, validation_data=val_ds)
 
