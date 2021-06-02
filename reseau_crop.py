@@ -48,7 +48,7 @@ nb_image= len(os.listdir(allene_dir))+len(os.listdir(hex_dir))+len(os.listdir(cr
 
 #Chargement des images sur le disque en un dataset
 
-batch_size = 15
+batch_size = 25
 img_height = 450
 img_width  = 300
 
@@ -58,8 +58,8 @@ data_augmentation = keras.Sequential(
                                                  input_shape=(img_height, 
                                                               img_width,
                                                               3)),
-    layers.experimental.preprocessing.RandomRotation(0.1),
-    layers.experimental.preprocessing.RandomZoom(0.1),
+    layers.experimental.preprocessing.RandomRotation(0.3),
+
   ]
 )
 
@@ -79,11 +79,6 @@ val_ds = tf.keras.preprocessing.image_dataset_from_directory(
          seed=123,                              #faut la même seed pour les deux je pense
          image_size=(img_height, img_width),
          batch_size=batch_size)
-
-
-for images, _ in train_ds.take(int(nb_image/4)):
-  for i in range(4):
-    augmented_images = data_augmentation(images)
 
 
 #Nom des classes d'après le nom des dossiers
@@ -122,14 +117,17 @@ normalization_layer = layers.experimental.preprocessing.Rescaling(1./255)
 normalized_ds = train_ds.map(lambda x, y: (normalization_layer(x), y))
 image_batch, labels_batch = next(iter(normalized_ds))
 
+
 model = Sequential([
+  data_augmentation,
+  layers.experimental.preprocessing.Rescaling(1./255),
   layers.Conv2D(16, 5, padding='same', activation='relu',input_shape=(img_height,img_width,3)),
   layers.MaxPooling2D(),
   layers.Conv2D(32, 3, padding='same', activation='relu'),
   layers.MaxPooling2D(),
   layers.Conv2D(64, 3, padding='same', activation='relu'),
   layers.MaxPooling2D(),
-  layers.Dropout(0.1),
+  layers.Dropout(0.2),
   layers.Flatten(),
   layers.Dense(128, activation='relu'),
   layers.Dense(4,activation='softmax')
@@ -148,5 +146,5 @@ model.compile(optimizer='adam',
 #model.summary()
 
 #entrainnement
-history=model.fit(train_ds,epochs=6, validation_data=val_ds)
+history=model.fit(train_ds,epochs=8, validation_data=val_ds)
 
