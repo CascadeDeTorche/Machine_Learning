@@ -9,7 +9,7 @@ from numpy import std
 import matplotlib.pyplot as plt
 from sklearn.model_selection import KFold
 from keras.datasets import mnist
-from keras.utils import to_categorical
+#from keras.utils import to_categorical
 from keras.models import Sequential
 from keras.layers import Conv2D, MaxPooling2D, Dense, Flatten, Dropout
 from keras.optimizers import SGD
@@ -24,7 +24,7 @@ from tensorflow.python.util.nest import flatten
 # à l'endroit où vous les avez enregistrées
 
 tf.test.is_built_with_cuda()
-tf.test.is_gpu_available(cuda_only=False, min_cuda_compute_capability=None)
+tf.test.is_gpu_available(cuda_only=True, min_cuda_compute_capability=True)
 # Chemin relatif, attention à vérifier que le dossier d'execution de python est le bon
 
 train_dir =          os.path.abspath('Train')
@@ -55,21 +55,21 @@ train_datagen = ImageDataGenerator(rescale=1/.255)
 validation_datagen = ImageDataGenerator(rescale=1/.255)
 
 train_generator = train_datagen.flow_from_directory(train_dir,
-                                                    target_size=(150,150),
+                                                    target_size=(816,612),
                                                     class_mode="categorical",
-                                                    batch_size=100)
+                                                    batch_size=75)
 
 validation_generator = train_datagen.flow_from_directory(validation_dir,
-                                                         target_size=(150,150),
+                                                         target_size=(816,612),
                                                          class_mode="categorical",
-                                                         batch_size=100)
+                                                         batch_size=75)
 
 # Creation du model
 
 model=Sequential()
 
 #Première Convolution
-model.add(Conv2D(1,(5,5),activation='relu',input_shape=(150,150,3)))
+model.add(Conv2D(1,(7,7),activation='relu',input_shape=(816,612,3)))
 model.add(MaxPooling2D((2,2)))
 
 #Deuxième Convolution
@@ -85,4 +85,4 @@ model.add(Dense(4,activation = 'softmax'))
 
 model.compile(optimizer='rmsprop',loss='categorical_crossentropy',metrics=['accuracy'])
 
-history = model.fit(train_generator,epochs=5, validation_data=validation_generator,batch_size=100)
+history = model.fit(train_generator,epochs=6, validation_data=validation_generator,batch_size=30)
