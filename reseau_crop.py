@@ -48,7 +48,7 @@ nb_image= len(os.listdir(allene_dir))+len(os.listdir(hex_dir))+len(os.listdir(cr
 
 #Chargement des images sur le disque en un dataset
 
-batch_size = 25
+batch_size = 50
 img_height = 450
 img_width  = 300
 
@@ -145,8 +145,8 @@ model.compile(optimizer='adam',
 
 ###entrainnement###
 
-epochs=20
-# history=model.fit(train_ds,epochs=epochs, validation_data=val_ds)
+epochs=33
+history=model.fit(train_ds,epochs=epochs, validation_data=val_ds)
 
 ###Graphiques de precision###
 
