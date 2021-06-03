@@ -145,6 +145,120 @@ model.compile(optimizer='adam',
 #resum√© du model
 #model.summary()
 
+<<<<<<< HEAD
+###entrainnement###
+
+epochs=20
+#history=model.fit(train_ds,epochs=epochs, validation_data=val_ds)
+
+###Graphiques de precision###
+
+# acc = history.history['accuracy']
+# val_acc = history.history['val_accuracy']
+
+# loss = history.history['loss']
+# val_loss = history.history['val_loss']
+
+# epochs_range = range(epochs)
+
+# plt.figure(figsize=(8, 8))
+# plt.subplot(1, 2, 1)
+# plt.plot(epochs_range, acc, label='Training Accuracy')
+# plt.plot(epochs_range, val_acc, label='Validation Accuracy')
+# plt.legend(loc='lower right')
+# plt.title('Training and Validation Accuracy')
+
+# plt.subplot(1, 2, 2)
+# plt.plot(epochs_range, loss, label='Training Loss')
+# plt.plot(epochs_range, val_loss, label='Validation Loss')
+# plt.legend(loc='upper right')
+# plt.title('Training and Validation Loss')
+# plt.show()
+
+###Enregistrement du modele###
+# model.save("model_tool")
+
+###Chargement d'un modele###
+# model = keras.models.load_model("model_tool")
+
+
+
+
+###Test du modele
+
+# for i in range(6):
+#     img_dir = "Test/Allen/ ("+str(i+1)+").jpg"
+#     img_dir = pathlib.Path(img_dir)
+    
+#     img = keras.preprocessing.image.load_img(
+#           img_dir,
+#           target_size=(img_height, img_width))
+    
+#     img_array = keras.preprocessing.image.img_to_array(img)
+#     img_array = tf.expand_dims(img_array, 0)
+    
+#     predictions = model.predict(img_array)
+#     score = max(predictions)
+    
+#     print(
+#         "Cette vis allene a ÈtÈ estimÈe de la classe {} avec une confiance de {:.2f} %."
+#         .format(class_names[np.argmax(score)], 100 * np.max(score)))
+    
+# for i in range(6):
+#     img_dir = "Test/Hex/ ("+str(i+1)+").jpg"
+#     img_dir = pathlib.Path(img_dir)
+    
+#     img = keras.preprocessing.image.load_img(
+#           img_dir,
+#           target_size=(img_height, img_width))
+    
+#     img_array = keras.preprocessing.image.img_to_array(img)
+#     img_array = tf.expand_dims(img_array, 0)
+    
+#     predictions = model.predict(img_array)
+#     score = max(predictions)
+    
+#     print(
+#         "Cette vis hexagonal a ÈtÈ estimÈe de la classe {} avec une confiance de {:.2f} %."
+#         .format(class_names[np.argmax(score)], 100 * np.max(score)))
+    
+# for i in range(6):
+#     img_dir = "Test/Cruciforme/ ("+str(i+1)+").jpg"
+#     img_dir = pathlib.Path(img_dir)
+    
+#     img = keras.preprocessing.image.load_img(
+#           img_dir,
+#           target_size=(img_height, img_width))
+    
+#     img_array = keras.preprocessing.image.img_to_array(img)
+#     img_array = tf.expand_dims(img_array, 0)
+    
+#     predictions = model.predict(img_array)
+#     score = max(predictions)
+    
+#     print(
+#         "Cette vis cruciforme a ÈtÈ estimÈe de la classe {} avec une confiance de {:.2f} %."
+#         .format(class_names[np.argmax(score)], 100 * np.max(score)))
+    
+# for i in range(6):
+#     img_dir = "Test/Plat/ ("+str(i+1)+").jpg"
+#     img_dir = pathlib.Path(img_dir)
+    
+#     img = keras.preprocessing.image.load_img(
+#           img_dir,
+#           target_size=(img_height, img_width))
+    
+#     img_array = keras.preprocessing.image.img_to_array(img)
+#     img_array = tf.expand_dims(img_array, 0)
+    
+#     predictions = model.predict(img_array)
+#     score = max(predictions)
+    
+#     print(
+#         "Cette vis plate a ÈtÈ estimÈe de la classe {} avec une confiance de {:.2f} %."
+#         .format(class_names[np.argmax(score)], 100 * np.max(score)))
+=======
 #entrainnement
 history=model.fit(train_ds,epochs=8, validation_data=val_ds)
 
+>>>>>>> parent of 0d1c970 (Ajout du test)
