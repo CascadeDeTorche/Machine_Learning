@@ -147,7 +147,7 @@ model.compile(optimizer='adam',
 ###entrainnement###
 
 epochs=20
-#history=model.fit(train_ds,epochs=epochs, validation_data=val_ds)
+history=model.fit(train_ds,epochs=epochs, validation_data=val_ds)
 
 ###Graphiques de precision###
 
@@ -199,7 +199,7 @@ epochs=20
 #     score = max(predictions)
     
 #     print(
-#         "Cette vis allene a été estimée de la classe {} avec une confiance de {:.2f} %."
+#         "Cette vis allene a ï¿½tï¿½ estimï¿½e de la classe {} avec une confiance de {:.2f} %."
 #         .format(class_names[np.argmax(score)], 100 * np.max(score)))
     
 # for i in range(5):
@@ -217,7 +217,7 @@ epochs=20
 #     score = max(predictions)
     
 #     print(
-#         "Cette vis hexagonal a été estimée de la classe {} avec une confiance de {:.2f} %."
+#         "Cette vis hexagonal a ï¿½tï¿½ estimï¿½e de la classe {} avec une confiance de {:.2f} %."
 #         .format(class_names[np.argmax(score)], 100 * np.max(score)))
     
 # for i in range(6):
@@ -235,7 +235,7 @@ epochs=20
 #     score = max(predictions)
     
 #     print(
-#         "Cette vis cruciforme a été estimée de la classe {} avec une confiance de {:.2f} %."
+#         "Cette vis cruciforme a ï¿½tï¿½ estimï¿½e de la classe {} avec une confiance de {:.2f} %."
 #         .format(class_names[np.argmax(score)], 100 * np.max(score)))
     
 # for i in range(4):
@@ -253,5 +253,5 @@ epochs=20
 #     score = max(predictions)
     
 #     print(
-#         "Cette vis plate a été estimée de la classe {} avec une confiance de {:.2f} %."
+#         "Cette vis plate a ï¿½tï¿½ estimï¿½e de la classe {} avec une confiance de {:.2f} %."
 #         .format(class_names[np.argmax(score)], 100 * np.max(score)))
