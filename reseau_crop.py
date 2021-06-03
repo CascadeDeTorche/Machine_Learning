@@ -199,7 +199,7 @@ history=model.fit(train_ds,epochs=epochs, validation_data=val_ds)
 #     score = max(predictions)
     
 #     print(
-#         "Cette vis allene a �t� estim�e de la classe {} avec une confiance de {:.2f} %."
+#         "Cette vis allene a ete estimee de la classe {} avec une confiance de {:.2f} %."
 #         .format(class_names[np.argmax(score)], 100 * np.max(score)))
     
 # for i in range(5):
@@ -217,7 +217,7 @@ history=model.fit(train_ds,epochs=epochs, validation_data=val_ds)
 #     score = max(predictions)
     
 #     print(
-#         "Cette vis hexagonal a �t� estim�e de la classe {} avec une confiance de {:.2f} %."
+#         "Cette vis hexagonal a ete estimee de la classe {} avec une confiance de {:.2f} %."
 #         .format(class_names[np.argmax(score)], 100 * np.max(score)))
     
 # for i in range(5):
@@ -235,7 +235,7 @@ history=model.fit(train_ds,epochs=epochs, validation_data=val_ds)
 #     score = max(predictions)
     
 #     print(
-#         "Cette vis cruciforme a �t� estim�e de la classe {} avec une confiance de {:.2f} %."
+#         "Cette vis cruciforme a ete estimee de la classe {} avec une confiance de {:.2f} %."
 #         .format(class_names[np.argmax(score)], 100 * np.max(score)))
     
 # for i in range(5):
@@ -253,5 +253,5 @@ history=model.fit(train_ds,epochs=epochs, validation_data=val_ds)
 #     score = max(predictions)
     
 #     print(
-#         "Cette vis plate a �t� estim�e de la classe {} avec une confiance de {:.2f} %."
+#         "Cette vis plate a ete estimee de la classe {} avec une confiance de {:.2f} %."
 #         .format(class_names[np.argmax(score)], 100 * np.max(score)))
