@@ -114,8 +114,6 @@ val_ds = val_ds.cache().prefetch(buffer_size=AUTOTUNE)
 #normalisation des images
 
 normalization_layer = layers.experimental.preprocessing.Rescaling(1./255)
-normalized_ds = train_ds.map(lambda x, y: (normalization_layer(x), y))
-image_batch, labels_batch = next(iter(normalized_ds))
 
 
 model = Sequential([
@@ -130,6 +128,7 @@ model = Sequential([
   layers.Dropout(0.2),
   layers.Flatten(),
   layers.Dense(128, activation='relu'),
+  layers.Dense(64, activation='relu'),
   layers.Dense(4,activation='softmax')
 ])
 
@@ -147,7 +146,7 @@ model.compile(optimizer='adam',
 ###entrainnement###
 
 epochs=20
-history=model.fit(train_ds,epochs=epochs, validation_data=val_ds)
+# history=model.fit(train_ds,epochs=epochs, validation_data=val_ds)
 
 ###Graphiques de precision###
 
@@ -184,7 +183,7 @@ history=model.fit(train_ds,epochs=epochs, validation_data=val_ds)
 
 ###Test du modele
 
-# for i in range(6):
+# for i in range(5):
 #     img_dir = "Test/Allen/ ("+str(i+1)+").jpg"
 #     img_dir = pathlib.Path(img_dir)
     
@@ -199,7 +198,7 @@ history=model.fit(train_ds,epochs=epochs, validation_data=val_ds)
 #     score = max(predictions)
     
 #     print(
-#         "Cette vis allene a �t� estim�e de la classe {} avec une confiance de {:.2f} %."
+#         "Cette vis allene a ete estimee de la classe {} avec une confiance de {:.2f} %."
 #         .format(class_names[np.argmax(score)], 100 * np.max(score)))
     
 # for i in range(5):
@@ -217,10 +216,10 @@ history=model.fit(train_ds,epochs=epochs, validation_data=val_ds)
 #     score = max(predictions)
     
 #     print(
-#         "Cette vis hexagonal a �t� estim�e de la classe {} avec une confiance de {:.2f} %."
+#         "Cette vis hexagonal a ete estimee de la classe {} avec une confiance de {:.2f} %."
 #         .format(class_names[np.argmax(score)], 100 * np.max(score)))
     
-# for i in range(6):
+# for i in range(5):
 #     img_dir = "Test/Cruciforme/ ("+str(i+1)+").jpg"
 #     img_dir = pathlib.Path(img_dir)
     
@@ -235,10 +234,10 @@ history=model.fit(train_ds,epochs=epochs, validation_data=val_ds)
 #     score = max(predictions)
     
 #     print(
-#         "Cette vis cruciforme a �t� estim�e de la classe {} avec une confiance de {:.2f} %."
+#         "Cette vis cruciforme a ete estimee de la classe {} avec une confiance de {:.2f} %."
 #         .format(class_names[np.argmax(score)], 100 * np.max(score)))
     
-# for i in range(4):
+# for i in range(5):
 #     img_dir = "Test/Plat/ ("+str(i+1)+").jpg"
 #     img_dir = pathlib.Path(img_dir)
     
@@ -253,5 +252,5 @@ history=model.fit(train_ds,epochs=epochs, validation_data=val_ds)
 #     score = max(predictions)
     
 #     print(
-#         "Cette vis plate a �t� estim�e de la classe {} avec une confiance de {:.2f} %."
+#         "Cette vis plate a ete estimee de la classe {} avec une confiance de {:.2f} %."
 #         .format(class_names[np.argmax(score)], 100 * np.max(score)))
