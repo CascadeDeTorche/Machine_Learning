@@ -184,7 +184,7 @@ epochs=20
 
 ###Test du modele
 
-# for i in range(6):
+# for i in range(5):
 #     img_dir = "Test/Allen/ ("+str(i+1)+").jpg"
 #     img_dir = pathlib.Path(img_dir)
     
@@ -220,7 +220,7 @@ epochs=20
 #         "Cette vis hexagonal a été estimée de la classe {} avec une confiance de {:.2f} %."
 #         .format(class_names[np.argmax(score)], 100 * np.max(score)))
     
-# for i in range(6):
+# for i in range(5):
 #     img_dir = "Test/Cruciforme/ ("+str(i+1)+").jpg"
 #     img_dir = pathlib.Path(img_dir)
     
@@ -238,7 +238,7 @@ epochs=20
 #         "Cette vis cruciforme a été estimée de la classe {} avec une confiance de {:.2f} %."
 #         .format(class_names[np.argmax(score)], 100 * np.max(score)))
     
-# for i in range(4):
+# for i in range(5):
 #     img_dir = "Test/Plat/ ("+str(i+1)+").jpg"
 #     img_dir = pathlib.Path(img_dir)
     
