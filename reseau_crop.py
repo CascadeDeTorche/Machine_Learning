@@ -128,7 +128,7 @@ model = Sequential([
   layers.Dropout(0.2),
   layers.Flatten(),
   layers.Dense(128, activation='relu'),
-  layers.Dense(64, activation='relu'),
+  layers.Dense(32, activation='relu'),
   layers.Dense(4,activation='softmax')
 ])
 
@@ -145,8 +145,8 @@ model.compile(optimizer='adam',
 
 ###entrainnement###
 
-epochs=33
-history=model.fit(train_ds,epochs=epochs, validation_data=val_ds)
+epochs=35
+# history=model.fit(train_ds,epochs=epochs, validation_data=val_ds)
 
 ###Graphiques de precision###
 
