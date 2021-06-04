@@ -48,7 +48,7 @@ nb_image= len(os.listdir(allene_dir))+len(os.listdir(hex_dir))+len(os.listdir(cr
 
 #Chargement des images sur le disque en un dataset
 
-batch_size = 50
+batch_size = 60
 img_height = 450
 img_width  = 300
 
@@ -145,32 +145,32 @@ model.compile(optimizer='adam',
 
 ###entrainnement###
 
-epochs=35
-# history=model.fit(train_ds,epochs=epochs, validation_data=val_ds)
+epochs=40
+history=model.fit(train_ds,epochs=epochs, validation_data=val_ds)
 
 ###Graphiques de precision###
 
-# acc = history.history['accuracy']
-# val_acc = history.history['val_accuracy']
+acc = history.history['accuracy']
+val_acc = history.history['val_accuracy']
 
-# loss = history.history['loss']
-# val_loss = history.history['val_loss']
+loss = history.history['loss']
+val_loss = history.history['val_loss']
 
-# epochs_range = range(epochs)
+epochs_range = range(15)
 
-# plt.figure(figsize=(8, 8))
-# plt.subplot(1, 2, 1)
-# plt.plot(epochs_range, acc, label='Training Accuracy')
-# plt.plot(epochs_range, val_acc, label='Validation Accuracy')
-# plt.legend(loc='lower right')
-# plt.title('Training and Validation Accuracy')
+plt.figure(figsize=(8, 8))
+plt.subplot(1, 2, 1)
+plt.plot(epochs_range, acc, label='Training Accuracy')
+plt.plot(epochs_range, val_acc, label='Validation Accuracy')
+plt.legend(loc='lower right')
+plt.title('Training and Validation Accuracy')
 
-# plt.subplot(1, 2, 2)
-# plt.plot(epochs_range, loss, label='Training Loss')
-# plt.plot(epochs_range, val_loss, label='Validation Loss')
-# plt.legend(loc='upper right')
-# plt.title('Training and Validation Loss')
-# plt.show()
+plt.subplot(1, 2, 2)
+plt.plot(epochs_range, loss, label='Training Loss')
+plt.plot(epochs_range, val_loss, label='Validation Loss')
+plt.legend(loc='upper right')
+plt.title('Training and Validation Loss')
+plt.show()
 
 ###Enregistrement du modele###
 # model.save("model_tool")
