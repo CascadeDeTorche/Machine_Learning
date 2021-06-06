@@ -16,10 +16,10 @@ from keras.layers import Conv2D, MaxPooling2D, Dense, Flatten, Dropout
 #chemin vers les donnees
 
 data_dir =     "Data_crop"
-allene_dir =   "Data_crop/Allene"
-hex_dir=       "Data_crop/Hex"
+allene_dir =   "Data_crop/Allen"
+hex_dir=       "Data_crop/Hexagonale"
 cruciforme_dir="Data_crop/Cruciforme"
-plat_dir=      "Data_crop/Plat"
+plat_dir=      "Data_crop/Fendue"
 
 #nombre d'images disponibles
 print('total image',              len(os.listdir(allene_dir))
@@ -114,21 +114,21 @@ val_ds = val_ds.cache().prefetch(buffer_size=AUTOTUNE)
 #normalisation des images
 
 normalization_layer = layers.experimental.preprocessing.Rescaling(1./255)
+train_ds = train_ds.map(lambda x, y: (normalization_layer(x), y))
 
 
 model = Sequential([
   data_augmentation,
-  layers.experimental.preprocessing.Rescaling(1./255),
-  layers.Conv2D(16, 5, padding='same', activation='relu',input_shape=(img_height,img_width,3)),
+  layers.Conv2D(16, 5, activation='relu',input_shape=(img_height,img_width,3)),
   layers.MaxPooling2D(),
-  layers.Conv2D(32, 3, padding='same', activation='relu'),
+  layers.Conv2D(32, 3, activation='relu'),
   layers.MaxPooling2D(),
-  layers.Conv2D(64, 3, padding='same', activation='relu'),
+  layers.Conv2D(64, 3, activation='relu'),
   layers.MaxPooling2D(),
-  layers.Dropout(0.2),
+  #layers.Dropout(0.2),
   layers.Flatten(),
   layers.Dense(128, activation='relu'),
-  layers.Dense(32, activation='relu'),
+  #layers.Dense(32, activation='relu'),
   layers.Dense(4,activation='softmax')
 ])
 
@@ -143,15 +143,23 @@ model.compile(optimizer='adam',
 #resume du model
 #model.summary()
 
-###entrainnement###
+###entrainement###
 
-# epochs=40
-# history=model.fit(train_ds,epochs=epochs, validation_data=val_ds)
+epochs=30
+history=model.fit(train_ds,epochs=10, validation_data=val_ds)
 
 ###Graphiques de precision###
 
-# acc = history.history['accuracy']
-# val_acc = history.history['val_accuracy']
+acc = history.history['accuracy']
+val_acc = history.history['val_accuracy']
+
+textfile = open("acc.txt", "w")
+
+for i in range(epochs):
+
+    textfile.write(str(i+1)+" "+str(acc[i])+" "+str(val_acc[i]) + "\n")
+
+textfile.close()
 
 # loss = history.history['loss']
 # val_loss = history.history['val_loss']
