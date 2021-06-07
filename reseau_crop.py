@@ -70,7 +70,7 @@ train_ds = tf.keras.preprocessing.image_dataset_from_directory(
            data_dir,                            #origine des fichiers
            validation_split=0.3,                #quel pourcentage des images est utilisé en validation
            subset="training",                   #precise si c'est pour le training ou la validation
-           seed=123,                            #seed pour le choix aleatoire des photos entre training et validation ?
+           seed=77,                             #seed pour le choix aleatoire des photos entre training et validation ?
            image_size=(img_height, img_width),  #dimension cible image
            batch_size=batch_size)               #ben la batch size
 
@@ -78,7 +78,7 @@ val_ds = tf.keras.preprocessing.image_dataset_from_directory(
          data_dir,
          validation_split=0.3,
          subset="validation",                   #la on fait la validation
-         seed=123,                              #faut la meme seed pour les deux je pense
+         seed=77,                               #faut la meme seed pour les deux je pense
          image_size=(img_height, img_width),
          batch_size=batch_size)
 
