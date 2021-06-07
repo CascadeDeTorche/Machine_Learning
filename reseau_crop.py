@@ -58,7 +58,9 @@ data_augmentation = keras.Sequential(
                                                  input_shape=(img_height, 
                                                               img_width,
                                                               3)),
+    layers.experimental.preprocessing.RandomFlip("vertical"),
     layers.experimental.preprocessing.RandomRotation(0.3),
+    layers.experimental.preprocessing.RandomZoom(0.2,0.2),
 
   ]
 )
@@ -114,18 +116,18 @@ val_ds = val_ds.cache().prefetch(buffer_size=AUTOTUNE)
 #normalisation des images
 
 normalization_layer = layers.experimental.preprocessing.Rescaling(1./255)
-train_ds = train_ds.map(lambda x, y: (normalization_layer(x), y))
 
 
 model = Sequential([
   data_augmentation,
-  layers.Conv2D(16, 5, activation='relu',input_shape=(img_height,img_width,3)),
+  layers.experimental.preprocessing.Rescaling(1./255),
+  layers.Conv2D(16, 5, padding='same', activation='relu'),
   layers.MaxPooling2D(),
-  layers.Conv2D(32, 3, activation='relu'),
+  layers.Conv2D(32, 3, padding='same', activation='relu'),
   layers.MaxPooling2D(),
-  layers.Conv2D(64, 3, activation='relu'),
+  layers.Conv2D(64, 3, padding='same', activation='relu'),
   layers.MaxPooling2D(),
-  #layers.Dropout(0.2),
+  layers.Dropout(0.2),
   layers.Flatten(),
   layers.Dense(128, activation='relu'),
   #layers.Dense(32, activation='relu'),
@@ -143,10 +145,10 @@ model.compile(optimizer='adam',
 #resume du model
 #model.summary()
 
-###entrainement###
+###entrainnement###
 
-epochs=30
-history=model.fit(train_ds,epochs=10, validation_data=val_ds)
+epochs=40
+history=model.fit(train_ds,epochs=epochs, validation_data=val_ds)
 
 ###Graphiques de precision###
 
@@ -160,6 +162,7 @@ for i in range(epochs):
     textfile.write(str(i+1)+" "+str(acc[i])+" "+str(val_acc[i]) + "\n")
 
 textfile.close()
+
 
 # loss = history.history['loss']
 # val_loss = history.history['val_loss']
