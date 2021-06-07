@@ -194,74 +194,74 @@ textfile.close()
 
 ###Test du modele
 
-# for i in range(10):
-#     img_dir = "Test/Allen/ ("+str(i+1)+").jpg"
-#     img_dir = pathlib.Path(img_dir)
+for i in range(20):
+    img_dir = "Test/Allen/ ("+str(i+1)+").jpg"
+    img_dir = pathlib.Path(img_dir)
     
-#     img = keras.preprocessing.image.load_img(
-#           img_dir,
-#           target_size=(img_height, img_width))
+    img = keras.preprocessing.image.load_img(
+          img_dir,
+          target_size=(img_height, img_width))
     
-#     img_array = keras.preprocessing.image.img_to_array(img)
-#     img_array = tf.expand_dims(img_array, 0)
+    img_array = keras.preprocessing.image.img_to_array(img)
+    img_array = tf.expand_dims(img_array, 0)
     
-#     predictions = model.predict(img_array)
-#     score = max(predictions)
+    predictions = model.predict(img_array)
+    score = max(predictions)
     
-#     print(
-#         "Cette vis allene a ete estimee de la classe {} avec une confiance de {:.2f} %."
-#         .format(class_names[np.argmax(score)], 100 * np.max(score)))
+    print(
+        "Cette vis allene a ete estimee de la classe {} avec une confiance de {:.2f} %."
+        .format(class_names[np.argmax(score)], 100 * np.max(score)))
     
-# for i in range(10):
-#     img_dir = "Test/Hex/ ("+str(i+1)+").jpg"
-#     img_dir = pathlib.Path(img_dir)
+for i in range(20):
+    img_dir = "Test/Hexagonale/ ("+str(i+1)+").jpg"
+    img_dir = pathlib.Path(img_dir)
     
-#     img = keras.preprocessing.image.load_img(
-#           img_dir,
-#           target_size=(img_height, img_width))
+    img = keras.preprocessing.image.load_img(
+          img_dir,
+          target_size=(img_height, img_width))
     
-#     img_array = keras.preprocessing.image.img_to_array(img)
-#     img_array = tf.expand_dims(img_array, 0)
+    img_array = keras.preprocessing.image.img_to_array(img)
+    img_array = tf.expand_dims(img_array, 0)
     
-#     predictions = model.predict(img_array)
-#     score = max(predictions)
+    predictions = model.predict(img_array)
+    score = max(predictions)
     
-#     print(
-#         "Cette vis hexagonal a ete estimee de la classe {} avec une confiance de {:.2f} %."
-#         .format(class_names[np.argmax(score)], 100 * np.max(score)))
+    print(
+        "Cette vis hexagonal a ete estimee de la classe {} avec une confiance de {:.2f} %."
+        .format(class_names[np.argmax(score)], 100 * np.max(score)))
     
-# for i in range(10):
-#     img_dir = "Test/Cruciforme/ ("+str(i+1)+").jpg"
-#     img_dir = pathlib.Path(img_dir)
+for i in range(20):
+    img_dir = "Test/Cruciforme/ ("+str(i+1)+").jpg"
+    img_dir = pathlib.Path(img_dir)
     
-#     img = keras.preprocessing.image.load_img(
-#           img_dir,
-#           target_size=(img_height, img_width))
+    img = keras.preprocessing.image.load_img(
+          img_dir,
+          target_size=(img_height, img_width))
     
-#     img_array = keras.preprocessing.image.img_to_array(img)
-#     img_array = tf.expand_dims(img_array, 0)
+    img_array = keras.preprocessing.image.img_to_array(img)
+    img_array = tf.expand_dims(img_array, 0)
     
-#     predictions = model.predict(img_array)
-#     score = max(predictions)
+    predictions = model.predict(img_array)
+    score = max(predictions)
     
-#     print(
-#         "Cette vis cruciforme a ete estimee de la classe {} avec une confiance de {:.2f} %."
-#         .format(class_names[np.argmax(score)], 100 * np.max(score)))
+    print(
+        "Cette vis cruciforme a ete estimee de la classe {} avec une confiance de {:.2f} %."
+        .format(class_names[np.argmax(score)], 100 * np.max(score)))
     
-# for i in range(10):
-#     img_dir = "Test/Plat/ ("+str(i+1)+").jpg"
-#     img_dir = pathlib.Path(img_dir)
+for i in range(20):
+    img_dir = "Test/Fendue/ ("+str(i+1)+").jpg"
+    img_dir = pathlib.Path(img_dir)
     
-#     img = keras.preprocessing.image.load_img(
-#           img_dir,
-#           target_size=(img_height, img_width))
+    img = keras.preprocessing.image.load_img(
+          img_dir,
+          target_size=(img_height, img_width))
     
-#     img_array = keras.preprocessing.image.img_to_array(img)
-#     img_array = tf.expand_dims(img_array, 0)
+    img_array = keras.preprocessing.image.img_to_array(img)
+    img_array = tf.expand_dims(img_array, 0)
     
-#     predictions = model.predict(img_array)
-#     score = max(predictions)
+    predictions = model.predict(img_array)
+    score = max(predictions)
     
-#     print(
-#         "Cette vis plate a ete estimee de la classe {} avec une confiance de {:.2f} %."
-#         .format(class_names[np.argmax(score)], 100 * np.max(score)))
+    print(
+        "Cette vis plate a ete estimee de la classe {} avec une confiance de {:.2f} %."
+        .format(class_names[np.argmax(score)], 100 * np.max(score)))
